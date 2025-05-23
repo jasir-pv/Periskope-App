@@ -9,8 +9,16 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #F0F2F5;
+  --foreground: #111B21;
+  --primary: #008069;
+  --primary-light: #DCF8C6;
+  --secondary: #E1E1E1;
+  --accent: #25D366;
+  --muted: #67717A;
+  --sidebar: #FFFFFF;
+  --highlight: #E9F5F2;
+  --danger: #EA4335;
   }
 }
 
@@ -18,4 +26,14 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
 }
