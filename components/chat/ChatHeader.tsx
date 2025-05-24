@@ -1,15 +1,13 @@
 'use client'
 
 import React from 'react'
-import { FaFilter } from 'react-icons/fa'
 import { GoFileDirectoryFill } from 'react-icons/go'
 import { IoFilterOutline } from 'react-icons/io5'
 
-type Props = {}
 
-const ChatHeader = (props: Props) => {
+const ChatHeader = ( ) => {
   return (
-   <div className="h-8 bg-gray-100 flex items-center justify-center">
+   <div className="p-2 h-10 bg-white flex items-center border-b justify-center">
      <div className="flex text-muted items-center justify-center gap-1  ">
         <div className='flex items-center gap-1 text-green-500'>
         <GoFileDirectoryFill />

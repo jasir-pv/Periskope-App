@@ -1,25 +1,24 @@
 'use client'
 
 import React from 'react'
-import ChatHeader from './ChatHeader'
-import ChatSidebar from './ChatSidebar'
-import SidebarHeader from './SidebarHeader'
+import ChatList from './ChatList'
+import ChatWindow from './ChatWindow'
 
 
-type Props = {}
 
-const MainContainer = (props: Props) => {
+const MainContainer = () => {
+  
   return (
     <div className='flex flex-1 ml-12 mr-10 h-full bg-green-100'>
 
       <div className='w-[450px] bg-white bor'>
 
-      <ChatSidebar/>
+      <ChatList/>
       </div>
 
       <div className='w-full'> 
 
-      <SidebarHeader/>
+      <ChatWindow/>
 
       </div>
       

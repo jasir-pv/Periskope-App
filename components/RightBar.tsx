@@ -1,19 +1,17 @@
 'use client'
 
 import React, { useState } from 'react'
-import { LuPanelLeftOpen, LuPanelRightOpen } from 'react-icons/lu'
-import {MdHome, MdOutlineRefresh, MdEdit, MdOutlineSettings, 
-  MdPeopleAlt,MdOutlineMailOutline,MdOutlinePhoto, MdMenu} from 'react-icons/md'
+import {  LuPanelRightOpen } from 'react-icons/lu'
+import { MdOutlineRefresh, MdEdit, 
+  MdPeopleAlt,MdOutlinePhoto, MdMenu} from 'react-icons/md'
 
 import {
   RiDashboardLine,
   RiShareForwardLine,
   RiListSettingsLine,
 } from 'react-icons/ri'
-import { FaArrowLeft } from 'react-icons/fa'
 import { CiAt } from 'react-icons/ci'
 
-type Props = {}
 
 const sidebarItems = [
   { id: 'back', icon: <LuPanelRightOpen />, label: 'Back' },
@@ -28,13 +26,13 @@ const sidebarItems = [
   { id: 'settings', icon: <RiListSettingsLine />, label: 'Settings' },
 ]
 
-const RightBar = (props: Props) => {
+const RightBar = () => {
 
   const [activeItem, setActiveItem] = useState<string>('dashboard')
 
 
   return (
-    <div className=' fixed right-0 w-10 h-screen p-2 bg-primary-light border-l border-gray-300 
+    <div className=' fixed right-0 w-10 h-screen p-2 bg-primary-light border-l border-gray-100 
     flex flex-col items-center justify-center '>
        <div className="flex flex-col gap-4">
         {sidebarItems.map((item) => (

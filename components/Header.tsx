@@ -7,27 +7,26 @@ import { RiChatSmileAiFill, RiExpandUpDownLine } from 'react-icons/ri'
 import { VscDesktopDownload } from 'react-icons/vsc'
 import { WiStars } from 'react-icons/wi'
 
-type Props = {}
 
-const Header = (props: Props) => {
+const Header = () => {
   return (
-    <div className='ml-12 p-2 bg-primary-light border-b border-gray-300 flex justify-between w-full items-center'>
+    <div className='ml-12 p-2 bg-primary-light border-b border-gray-100 flex justify-between w-full items-center'>
         <div className='flex flex-row  items-center gap-2 ml-4'>
                 <RiChatSmileAiFill  className='text-muted'/>           
                 <h2 className='text-xs text-muted font-sans font-semibold'>Chats</h2>
         </div>
 
           <div className='flex gap-4'>
-              <div className='flex items-center text-xs gap-1 text-muted p-1 border'>
+              <div className='flex items-center text-[10px] gap-1 text-muted p-1 border'>
                 <FaSyncAlt /> 
               <button> Refresh</button>
               </div>
 
-             <div className='flex items-center text-xs gap-1 text-muted p-1 border'>
+             <div className='flex items-center text-[10px] gap-1 text-muted p-1 border'>
                 <FaQuestionCircle /> 
               <button> Help</button>
               </div>
-             <div className='flex items-center text-xs gap-1 text-muted p-1 border'>
+             <div className='flex items-center text-[10px] gap-1 text-muted p-1 border'>
                 <FaStar className='text-yellow-400'/> 
               <button> 5/8 Phones</button>
               <RiExpandUpDownLine />
