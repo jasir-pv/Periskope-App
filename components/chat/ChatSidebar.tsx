@@ -1,13 +1,20 @@
-'use client'
+import { GoFileDirectoryFill } from "react-icons/go";
+import ChatHeader from "./ChatHeader";
 
-import React from 'react'
-
-type Props = {}
-
-const ChatSidebar = (props: Props) => {
+export default function ChatSidebar() {
   return (
-    <div>ChatSidebar</div>
+
+    <div>
+
+{/* Chat name header filter search */}
+
+  <ChatHeader/>
+
+    {/* Chat names */}
+
+
+
+
+</div>
   )
 }
-
-export default ChatSidebar

@@ -34,7 +34,7 @@ const RightBar = (props: Props) => {
 
 
   return (
-    <div className=' fixed right-0 w-10 h-screen p-2 bg-primary-light border-l mt-10 border-gray-300 
+    <div className=' fixed right-0 w-10 h-screen p-2 bg-primary-light border-l border-gray-300 
     flex flex-col items-center justify-center '>
        <div className="flex flex-col gap-4">
         {sidebarItems.map((item) => (
