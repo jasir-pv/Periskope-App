@@ -1,10 +1,10 @@
 'use client'
 
-import { FiMessageSquare} from 'react-icons/fi';
 import { format } from 'date-fns';
 import { dummyChats } from '@/lib/data';
 import ChatHeader from './ChatHeader';
 import { RiChatNewLine } from 'react-icons/ri';
+import Image from 'next/image';
 // import { useEffect, useState } from 'react';
 // import { supabase } from '@/lib/supabase';
 
@@ -49,7 +49,7 @@ const ChatList = () => {
   };
 
   return (
-    <div className="w-80 md:w-64 h-screen bg-white border-r border-gray-200 flex flex-col">
+    <div className=" relative w-80 md:w-64 h-screen bg-white border-r border-gray-200 flex flex-col">
       
       <ChatHeader />
 
@@ -59,11 +59,16 @@ const ChatList = () => {
 
 
 
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto ">
         {dummyChats.map((chat) => (
-          <div key={chat.id} className="flex items-center p-2 border-b border-gray-100 hover:bg-gray-50 cursor-pointer">
-            <div className="flex-shrink-0 w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center">
-              <FiMessageSquare className="text-gray-500" />
+          <div key={chat.id} className="flex items-center p-2 border-b border-gray-100 hover:bg-gray-100 cursor-pointer">
+            <div className=" rounded-full flex items-center justify-center">
+              <Image
+                 src="/periskopAsset 1.svg" 
+                   className='mt-2 mb-5'
+                   width={36}
+                   height={36}
+                   alt='Profile'/>
             </div>
 
 
@@ -82,7 +87,7 @@ const ChatList = () => {
                   {chat.lastMessage || <span className="italic text-gray-400">No messages</span>}
                 </p>
 
-                {/* chat count          */}
+                {/* chat count       */}
                 {chat.unreadCount > 0 && (
                   <span className=" bg-accent text-white text-[10px] font-medium rounded-full h-4 w-4  flex items-center justify-center">
                     {chat.unreadCount}
@@ -104,7 +109,7 @@ const ChatList = () => {
       </div>
 
 
-      <div className='bg-green-700 absolute bottom-8 ml-60 
+      <div className='bg-green-700 z-10 absolute bottom-20 right-6 hover:bg-accent 
                        rounded-full p-3 text-white'>
         <RiChatNewLine className='stroke-slate-100'/>
       </div>

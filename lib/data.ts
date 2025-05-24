@@ -77,3 +77,90 @@
     },
     
   ];
+
+
+  export const messages = [
+    {
+      id: '1',
+      sender: 'Test El Centro',
+      content: 'Roshnag Airtel, Roshnag Jio, Bharat Kumar Ramesh, Periskope',
+      time: '',
+      isMe: false,
+      date: undefined
+    },
+    {
+      id: '2',
+      sender: 'CVFER',
+      content: '1151',
+      time: '',
+      isMe: false,
+      date: undefined
+    },
+    {
+      id: '3',
+      sender: 'CDERT',
+      content: '1154',
+      time: '',
+      isMe: false,
+      date: undefined
+    },
+    {
+      id: '4',
+      date: '22-01-2025',
+      sender: 'Roshnag Airtel',
+      content: 'Hello, South Eunal',
+      phoneNumber: '+91 63846 47925',
+      time: '08:01',
+      isMe: false
+    },
+    {
+      id: '5',
+      date: '23-01-2025',
+      sender: 'Periskope',
+      content: 'hello',
+      phoneNumber: '+91 99718 44008',
+      time: '12:07',
+      isMe: true,
+      isRead: true
+    },
+    {
+      id: '6',
+      sender: 'Hello, Livonia!',
+      content: '',
+      time: '08:01',
+      isMe: false
+    },
+    {
+      id: '7',
+      sender: 'Roshnag Airtel',
+      content: 'CDERT',
+      phoneNumber: '+91 63846 47925',
+      time: '09:49',
+      isMe: false
+    },
+    {
+      id: '8',
+      sender: 'Periskope',
+      content: 'test el centro',
+      phoneNumber: '+91 99718 44008',
+      time: '09:49',
+      isMe: true,
+      isRead: true
+    },
+    {
+      id: '9',
+      sender: 'Periskope',
+      content: 'testing',
+      phoneNumber: '+91 99718 44008',
+      time: '09:49',
+      isMe: true,
+      isRead: true
+    },
+    {
+      id: '10',
+      sender: 'WhatsApp',
+      content: 'Private Note',
+      time: '17925',
+      isMe: false
+    }
+  ]
