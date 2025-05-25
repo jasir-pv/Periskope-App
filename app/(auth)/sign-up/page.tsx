@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import React from 'react'
 
 
@@ -54,9 +55,9 @@ const page = ( ) => {
 
         <div className='text-center text-sm text-gray-600'>
          Already have account?
-          <a href="/login" className='font-medium ml-1 text-green-600 hover:text-green-500'>
+          <Link href="/login" className='font-medium ml-1 text-green-600 hover:text-green-500'>
             Login
-          </a>
+          </Link>
        </div>
       
         </div>

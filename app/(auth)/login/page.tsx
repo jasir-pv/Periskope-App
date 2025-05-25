@@ -1,15 +1,28 @@
 'use client'
 
-
-import { signInWithGoogle } from '@/utils/supabase/actions/actions'
 import Link from 'next/link'
 import React from 'react'
+import { supabaseBrowser } from '@/utils/supabase/client';
 
 
 
 const page = ( ) => {
 
 
+  const handleGoogleLogin = async () => {
+    const { data, error } = await supabaseBrowser.auth.signInWithOAuth({
+      provider: "google",
+      options: {
+        redirectTo: `${location.origin}/auth/callback`,
+      },
+    });
+    
+    console.log(data)
+    if (error) {
+      console.error("Google login error:", error);
+      return;
+    }
+  };
 
 
   return (
@@ -53,7 +66,7 @@ const page = ( ) => {
           </button>
 
             <button
-          onClick={signInWithGoogle}
+          onClick={handleGoogleLogin}
           className="w-full flex items-center justify-center gap-2 bg-white text-gray-700 py-2 px-4 border border-gray-300 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24">
@@ -67,7 +80,7 @@ const page = ( ) => {
         </button>
 
         <div className='text-center text-sm text-gray-600'>
-          Don't have an account?{' '}
+          Don't have an account?
           <Link href="/sign-up" className='font-medium ml-1 text-green-600 hover:text-green-500'>
             Sign up
           </Link>

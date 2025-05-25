@@ -19,7 +19,7 @@ export default function Home() {
    <Sidebar expand={expand} setExpand={setExpand}/>
 
     <RightBar/>
-      <MainContainer/>
+      <MainContainer params={{ userId: "" }}/>
 </div>
 
 </div>

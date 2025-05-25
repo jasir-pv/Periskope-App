@@ -1,7 +1,9 @@
 'use client'
 
+import { supabaseBrowser } from '@/utils/supabase/client'
 import Link from 'next/link'
-import React from 'react'
+import { useRouter } from 'next/navigation'
+import React, { useEffect } from 'react'
 import { FaQuestionCircle, FaStar, FaSyncAlt } from 'react-icons/fa'
 import { MdNotificationsOff, MdOutlineSort } from 'react-icons/md'
 import { RiChatSmileAiFill, RiExpandUpDownLine } from 'react-icons/ri'
@@ -10,6 +12,22 @@ import { WiStars } from 'react-icons/wi'
 
 
 const Header = () => {
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data: { session } } = await supabaseBrowser.auth.getSession();
+      
+      if (!session) {
+        router.push("/login");
+      }
+    };
+
+    checkSession();
+  }, [router]);
+
+
   return (
     <div className='ml-12 p-2 bg-primary-light border-b border-gray-100 flex justify-between w-full items-center'>
         <div className='flex flex-row  items-center gap-2 ml-4'>
@@ -22,6 +40,14 @@ const Header = () => {
             <div className='flex items-center text-[10px] gap-1 text-muted bg-green-100 p-1 border'>
                 <FaSyncAlt /> 
               <button> Login</button>
+              <button 
+        onClick={async () => {
+          await supabaseBrowser.auth.signOut();
+          router.push("/login");
+        }}
+      >
+        Sign Out
+      </button>
               </div>
             </Link>
               <div className='flex items-center text-[10px] gap-1 text-muted p-1 border'>
