@@ -2,7 +2,7 @@ import React from 'react'
 import { RxAvatar } from 'react-icons/rx'
 
 
-const ChatWindowHeader = ( ) => {
+const ChatWindowHeader = (  ) => {
   return (
     <div> <div className="w-full h-10 flex p-2 gap-1 bg-white  border-b border-gray-300">
       <div className="flex items-center">

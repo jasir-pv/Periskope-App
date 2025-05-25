@@ -17,7 +17,7 @@ const MainContainer = ( { params }: { params: { userId: string } } ) => {
   if (!user) redirect("/login");
 
   return (
-    <div className='flex flex-1 ml-12 mr-10 h-screen bg-green-100 overflow-auto'>
+    <div className='flex ml-12 mr-10 h-screen bg-green-100 overflow-auto'>
 
       <div className=' flex h-screen bg-white'>
 

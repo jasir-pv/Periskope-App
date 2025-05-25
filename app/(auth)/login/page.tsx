@@ -80,7 +80,8 @@ const page = ( ) => {
         </button>
 
         <div className='text-center text-sm text-gray-600'>
-          Don't have an account?
+        <p> Don&apos;t have an account? </p>
+
           <Link href="/sign-up" className='font-medium ml-1 text-green-600 hover:text-green-500'>
             Sign up
           </Link>

@@ -29,7 +29,7 @@ const Header = () => {
 
 
   return (
-    <div className='ml-12 p-2 bg-primary-light border-b border-gray-100 flex justify-between w-full items-center'>
+    <div className='ml-12  p-2 bg-primary-light border-b border-gray-100 flex justify-between w-full items-center'>
         <div className='flex flex-row  items-center gap-2 ml-4'>
                 <RiChatSmileAiFill  className='text-muted'/>           
                 <h2 className='text-xs text-muted font-sans font-semibold'>Chats</h2>

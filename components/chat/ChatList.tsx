@@ -76,9 +76,7 @@ const ChatList = () => {
               <div className="flex justify-between">
                 <h3 className="text-xs font-semibold font-sans text-gray-900 truncate">
                   {chat.name}
-                  {chat.isVerified && (
-                    <span className="ml-1 text-blue-500">✔</span>
-                  )}
+                 
                 </h3>
                 <span className="text-[9px] text-gray-500">{formatDate(chat.timestamp)}</span>
               </div>

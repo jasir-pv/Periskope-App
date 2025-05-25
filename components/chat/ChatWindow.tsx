@@ -3,11 +3,15 @@
 import { useEffect, useRef, useState } from "react";
 import ChatWindowHeader from "./ChatWindowHeader";
 import { BsCheck2All, BsEmojiSmile } from "react-icons/bs";
-import { messages as dummyMessages } from "@/lib/data";
+
 import { FiMic, FiPaperclip } from "react-icons/fi";
 import { IoSend } from "react-icons/io5";
 import { supabaseBrowser } from "@/utils/supabase/client";
 import { useUser } from "../context/UserContext";
+
+
+
+
 
 interface Message {
   id: string;
@@ -26,6 +30,160 @@ interface Message {
   };
 }
 
+export const dummyMessages: Message[] = [
+  {
+    id: '1',
+    sender_id: 'user-1',
+    receiver_id: 'user-2',
+    content: 'Hello, how are you?',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-1',
+      email: 'alice@example.com',
+      user_metadata: {
+        name: 'Alice',
+      },
+    },
+  },
+  {
+    id: '2',
+    sender_id: 'user-2',
+    receiver_id: 'user-1',
+    content: 'I am fine, thank you!',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-2',
+      email: 'bob@example.com',
+      user_metadata: {
+        name: 'Bob',
+      },
+    },
+  },
+  {
+    id: '3',
+    sender_id: 'user-1',
+    receiver_id: 'user-2',
+    content: 'What are you doing today?',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-1',
+      email: 'alice@example.com',
+      user_metadata: {
+        name: 'Alice',
+      },
+    },
+  },
+  {
+    id: '4',
+    sender_id: 'user-2',
+    receiver_id: 'user-1',
+    content: 'Just working on a new project.',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-2',
+      email: 'bob@example.com',
+      user_metadata: {
+        name: 'Bob',
+      },
+    },
+  },
+  {
+    id: '5',
+    sender_id: 'user-1',
+    receiver_id: 'user-2',
+    content: 'Sounds interesting!',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-1',
+      email: 'alice@example.com',
+      user_metadata: {
+        name: 'Alice',
+      },
+    },
+  },
+  {
+    id: '6',
+    sender_id: 'user-2',
+    receiver_id: 'user-1',
+    content: 'Yes, it is. Want to hear more?',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-2',
+      email: 'bob@example.com',
+      user_metadata: {
+        name: 'Bob',
+      },
+    },
+  },
+  {
+    id: '7',
+    sender_id: 'user-1',
+    receiver_id: 'user-2',
+    content: 'Sure, tell me all about it.',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-1',
+      email: 'alice@example.com',
+      user_metadata: {
+        name: 'Alice',
+      },
+    },
+  },
+  {
+    id: '8',
+    sender_id: 'user-2',
+    receiver_id: 'user-1',
+    content: 'It’s a chat app using Supabase!',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-2',
+      email: 'bob@example.com',
+      user_metadata: {
+        name: 'Bob',
+      },
+    },
+  },
+  {
+    id: '9',
+    sender_id: 'user-1',
+    receiver_id: 'user-2',
+    content: 'That’s awesome. Real-time too?',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-1',
+      email: 'alice@example.com',
+      user_metadata: {
+        name: 'Alice',
+      },
+    },
+  },
+  {
+    id: '10',
+    sender_id: 'user-2',
+    receiver_id: 'user-1',
+    content: 'Yes! Real-time messages and presence!',
+    created_at: new Date().toISOString(),
+    is_read: false,
+    sender: {
+      id: 'user-2',
+      email: 'bob@example.com',
+      user_metadata: {
+        name: 'Bob',
+      },
+    },
+  },
+];
+
+
 export default function ChatWindow({ receiverId }: { receiverId: string }) {
   const [messages, setMessages] = useState<Message[]>([]);
   const [newMessage, setNewMessage] = useState("");
@@ -34,14 +192,12 @@ export default function ChatWindow({ receiverId }: { receiverId: string }) {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { user } = useUser();
 
-  // Fetch messages from Supabase or use dummy data
   useEffect(() => {
     const fetchMessages = async () => {
       setIsLoading(true);
       setError(null);
       
       try {
-        // Try to fetch from Supabase first
         const { data, error: supabaseError } = await supabaseBrowser
           .from("messages")
           .select(`*, sender:sender_id(*)`)
@@ -50,7 +206,6 @@ export default function ChatWindow({ receiverId }: { receiverId: string }) {
 
         if (supabaseError) {
           console.error("Error fetching messages from Supabase:", supabaseError);
-          // Fallback to dummy data if Supabase fails
           setMessages(dummyMessages as Message[]);
           setError("Couldn't connect to live messages. Showing sample conversation.");
         } else {
@@ -68,16 +223,13 @@ export default function ChatWindow({ receiverId }: { receiverId: string }) {
     if (user?.id) {
       fetchMessages();
     } else {
-      // If no user, just show dummy data
       setMessages(dummyMessages as Message[]);
       setIsLoading(false);
     }
   }, [user?.id, receiverId]);
 
-  // Set up real-time subscription (only when using Supabase)
   useEffect(() => {
-    if (error) return; // Skip if we're using dummy data
-
+    if (error) return;
     const channel = supabaseBrowser
       .channel("room_one")
       .on(
@@ -99,7 +251,6 @@ export default function ChatWindow({ receiverId }: { receiverId: string }) {
     };
   }, [user?.id, receiverId, error]);
 
-  // Auto-scroll to bottom when messages change
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
@@ -109,7 +260,6 @@ export default function ChatWindow({ receiverId }: { receiverId: string }) {
 
     try {
       if (error) {
-        // If we're using dummy data, just add to local state
         const newMsg: Message = {
           id: Date.now().toString(),
           sender_id: user.id,
@@ -125,7 +275,7 @@ export default function ChatWindow({ receiverId }: { receiverId: string }) {
         };
         setMessages((prev) => [...prev, newMsg]);
       } else {
-        // Otherwise send to Supabase
+
         const { error: supabaseError } = await supabaseBrowser
           .from("messages")
           .insert([
@@ -155,24 +305,23 @@ export default function ChatWindow({ receiverId }: { receiverId: string }) {
 
   return (
     <div className="hidden sm:flex flex-col h-screen bg-white">
+     
       {/* Header */}
-      <ChatWindowHeader receiverId={receiverId} />
+      <ChatWindowHeader  />
 
-      {/* Error message */}
+
       {error && (
         <div className="bg-yellow-100 text-yellow-800 text-sm p-2 text-center">
           {error}
         </div>
       )}
 
-      {/* Loading state */}
       {isLoading && (
         <div className="flex-1 flex items-center justify-center">
           <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
         </div>
       )}
 
-      {/* Messages Container */}
       {!isLoading && (
         <div className="flex-1 overflow-y-auto p-2 bg-gray-200">
           {messages.map((msg) => (

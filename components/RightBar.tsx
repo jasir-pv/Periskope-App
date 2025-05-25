@@ -34,7 +34,7 @@ const RightBar = () => {
   return (
     <div className=' hidden sm:block  fixed right-0 w-10 h-screen p-2 bg-primary-light border-l border-gray-100 
      flex-col items-center justify-center '>
-       <div className="flex flex-col gap-4">
+       <div className="flex flex-col gap-4 mt-14">
         {sidebarItems.map((item) => (
           <button
             key={item.id}

@@ -15,12 +15,11 @@ export default function Home() {
 
    <Header />
 
-    <div className="flex-1 flex flex-col">
+
    <Sidebar expand={expand} setExpand={setExpand}/>
 
     <RightBar/>
       <MainContainer params={{ userId: "" }}/>
-</div>
 
 </div>
 

@@ -34,7 +34,7 @@ const Sidebar = ( { expand, setExpand }: SidebarProps ) => {
  const router = useRouter()
 
   return (
-    <div className={` ${expand ? 'w-60': ''}w-12 h-screen p-2 bg-primary-light border-r border-gray-200 flex flex-col justify-between items-center top-0 absolute `}>
+    <div className={` ${expand ? 'w-60 z-10': ''}w-12 h-screen p-2 bg-primary-light border-r border-gray-200 flex flex-col justify-between items-center top-0 absolute `}>
 
       <div className=''>
         <Image src="/periskopAsset 1.svg" 
