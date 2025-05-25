@@ -1,6 +1,13 @@
-import { createClient } from '@supabase/supabase-js';
+// 'use server'
+import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = 'https://your-project-url.supabase.co';
-const supabaseAnonKey = 'your-anon-key';
+export const supabaseServer = () => {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+  if (!supabaseUrl || !supabaseAnonKey) {
+    throw new Error('Supabase environment variables are missing')
+  }
+
+  return createClient(supabaseUrl, supabaseAnonKey)
+}

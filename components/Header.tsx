@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import React from 'react'
 import { FaQuestionCircle, FaStar, FaSyncAlt } from 'react-icons/fa'
 import { MdNotificationsOff, MdOutlineSort } from 'react-icons/md'
@@ -17,6 +18,12 @@ const Header = () => {
         </div>
 
           <div className='flex gap-4'>
+            <Link href="/login">
+            <div className='flex items-center text-[10px] gap-1 text-muted bg-green-100 p-1 border'>
+                <FaSyncAlt /> 
+              <button> Login</button>
+              </div>
+            </Link>
               <div className='flex items-center text-[10px] gap-1 text-muted p-1 border'>
                 <FaSyncAlt /> 
               <button> Refresh</button>

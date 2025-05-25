@@ -1,10 +1,11 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ChatWindowHeader from "./ChatWindowHeader";
 import { BsCheck2All, BsEmojiSmile } from "react-icons/bs";
 import { messages } from "@/lib/data";
 import { FiMic, FiPaperclip } from "react-icons/fi";
 import { IoSend } from "react-icons/io5";
+import { supabaseBrowser } from "@/utils/supabase/client";
 
 // interface Message {
 //   id: string
@@ -20,6 +21,8 @@ import { IoSend } from "react-icons/io5";
 export default function ChatWindow() {
 
   const [message, setMessage] = useState('')
+  const [newMessage, setNewMessage] = useState('')
+  const [userOnline, setUserOnline] = useState([])
 
   const handleSendMessage = () => {
     if (message.trim()) {
@@ -35,8 +38,42 @@ export default function ChatWindow() {
     }
   }
 
+// -----------------------------------------------
+  // useEffect ((!session?.user)=>{
+  //   if(setUserOnline([]))
+  // },[session])
+
+  // const roomOne = supabaseBrowser.channel('room_one',{
+  //   setMessage((preveMessage) => [...preveMessages.payload.payload])
+  //   console.log(messages)
+  // })
+
+  // roomOne.subscribe(async  (status) => {
+  //   await roomOne.track({
+  //     id:session?.user?.id,
+  //   })
+//   // })
+// ---------------------------------------------
+
+  // send Message
+
+  const sendMessage = async (e) => {
+    e.preventDefault()
+
+    superbase.channel('room_one').send({
+      type:'broadcast',
+      event: 'message',
+      payload: {
+        message: newMessage,
+        user_name: session?.user?.user_metadata?.email,
+        avatar: session?.user?.user_metadata?.avatar,
+        timeStamp:new Date().toISOString()
+      }
+    })
+  }
+
   return (
-      <div className="hidden sm:flex flex-col flex-1 h-screen bg-white ">
+      <div className="hidden sm:flex flex-col h-screen bg-white ">
         {/* Header */}
 
         <ChatWindowHeader />
@@ -80,8 +117,10 @@ export default function ChatWindow() {
       </div>
 
 
-           <div className="p-2 fixed bottom-0 bg-gray-100 border-t border-gray-200 ">
-        <div className="flex items-center">
+          {/* message area */}
+          
+           <div className="p-2  fixed bottom-0 bg-gray-100 border-t border-gray-200 ">
+        <div className="flex items-center w-full">
           <button className="mr-2  text-gray-600 hover:text-gray-800 p-2 rounded-full hover:bg-gray-200">
             <BsEmojiSmile className="w-4 h-4" />
           </button>
@@ -90,8 +129,8 @@ export default function ChatWindow() {
           </button>
           <input
             type="text"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
+            value={newMessage}
+            onChange={(e) => setNewMessage(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="Message..."
             className="flex-1 p-2 rounded-full bg-white focus:outline-none text-xs"
