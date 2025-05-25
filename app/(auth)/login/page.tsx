@@ -86,7 +86,6 @@ const page = ( ) => {
             Sign up
           </Link>
        </div>
-      
         </div>
       
 
