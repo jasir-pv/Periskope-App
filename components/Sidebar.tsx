@@ -43,8 +43,8 @@ const Sidebar = ( { expand, setExpand }: SidebarProps ) => {
               height={24}
               alt="Logo" />
 
-
-        <div className={`flex flex-col ${expand ? 'items-start pl-2' : 'items-center'} gap-3 text-gray-700 mt-12 w-full`} >
+  <div className={`flex flex-col ${expand? 'items-start pl-2' : 'items-center'} gap-3 text-gray-700 mt-12 w-full`} >
+      
             {menuItems.map((item) => (
             <button
               key={item.id}
